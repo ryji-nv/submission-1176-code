@@ -1,0 +1,48 @@
+[project]
+name = "neurips2026-submission1176-code"
+version = "1.0.0"
+description = "Anonymized spatial data engine code for NeurIPS 2026 Submission 1176"
+requires-python = "==3.12.*"
+dependencies = [
+    "isaacsim[all,extscache]==6.0.0.0",
+    "Pillow>=9.0.0",
+    "huggingface_hub>=0.20.0",
+    "requests>=2.28.0",
+    "trimesh",
+    "xatlas",
+    "pygltflib",
+    "plyfile",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff==0.11.6",
+    "pytest",
+]
+
+[dependency-groups]
+dev = [
+    "ruff==0.11.6",
+    "pytest",
+]
+
+[tool.uv]
+extra-index-url = ["https://pypi.org/simple"]
+index-strategy = "unsafe-best-match"
+prerelease = "allow"
+
+[tool.ruff]
+exclude = ["src/scenes/sage/kits/", "src/scenes/marble/"]
+
+[tool.ruff.lint]
+ignore = [
+    "E402",
+    "E741",
+    "E702",
+    "E722",
+    "F841",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"src/utils/__init__.py" = ["F401"]
+"src/tasks/__init__.py" = ["F401"]
